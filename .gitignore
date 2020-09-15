@@ -1,0 +1,5 @@
+node_modules
+build
+
+# In a real project don't commit your env variables; we only ship them here for sample purposes
+# .env
