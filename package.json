@@ -4,24 +4,32 @@
   "description": "This project is supposed to be a large, fake Fastify & TypeScript app. It is meant to be a reference as well as a pseudo-sandbox for Fastify TypeScript changes.",
   "main": "build/index.js",
   "scripts": {
-    "dev": "ts-node-dev -r dotenv/config src/index.ts dotenv_config_path=.env.development",
-    "build": "tsc -p tsconfig.json",
-    "start": "node -r dotenv/config build/index.js dotenv_config_path=.env"
+    "dev": "ts-node-dev -P tsconfig/tsconfig.dev.json -r dotenv/config src/index.ts dotenv_config_path=.env.development",
+    "build": "tsc -p tsconfig/tsconfig.prod.json",
+    "start": "node -r dotenv/config build/index.js dotenv_config_path=.env",
+    "lint": "eslint .",
+    "test": "tap **/*.test.ts"
   },
   "keywords": [],
   "author": "Ethan Arrowood",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^14.10.1",
+    "@types/tap": "^14.10.1",
     "@typescript-eslint/eslint-plugin": "^4.1.1",
     "@typescript-eslint/parser": "^4.1.1",
     "eslint": "^7.9.0",
+    "tap": "^14.10.8",
     "typescript": "^4.0.2"
   },
   "dependencies": {
+    "@sinclair/typebox": "^0.10.1",
     "dotenv": "^8.2.0",
     "env-var": "^6.3.0",
     "fastify": "^3.4.1",
+    "fastify-autoload": "^3.3.0",
+    "fastify-static": "^3.2.1",
+    "fluent-schema": "^1.0.4",
     "ts-node": "^9.0.0",
     "ts-node-dev": "^1.0.0-pre.62"
   }

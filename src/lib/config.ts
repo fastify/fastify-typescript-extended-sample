@@ -1,6 +1,6 @@
 import envVar from 'env-var'
 
-function getConfig () {
+export function getConfig () {
   const env = {
     NODE_ENV: envVar.get('NODE_ENV').required().asString(),
     API_HOST: envVar.get('API_HOST').required().asString(),
@@ -21,6 +21,17 @@ function getConfig () {
   }
 }
 
-export type Config = ReturnType<typeof getConfig>
+export function getTestingConfig(): Config {
+  return {
+    isProduction: false,
+    fastify: {
+      host: '0.0.0.0',
+      port: 5000
+    },
+    fastifyInit: {
+      logger: false
+    }
+  }
+}
 
-export default getConfig
+export type Config = ReturnType<typeof getConfig>

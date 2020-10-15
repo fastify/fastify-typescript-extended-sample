@@ -1,5 +1,6 @@
 node_modules
 build
+.nyc_output
 
 # In a real project don't commit your env variables; we only ship them here for sample purposes
 # .env
